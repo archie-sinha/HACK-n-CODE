@@ -1,0 +1,155 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    string fmenu[25] =
+    {
+        "Burger",
+        "Coke",
+        "Coffee",
+        "French Fries",
+        "Falooda",
+        "Ice Cream",
+        "Pizza"
+    };
+
+    int price[25] =
+    {
+        199,
+        79,
+        119,
+        99,
+        139,
+        99,
+        399
+    };
+
+    // Storing payment methods in string type array "payment"
+    string payment[25] =
+    {
+        "PayTM",
+        "GPay",
+        "UPI",
+        "Credit Card",
+        "Debit Card"
+    };
+
+    int order, quantity, cpayment;
+    string Name, contact, ptime, paymentnum, transid;
+
+    cout << "\t\t\tMPSTME Canteen\n\n" << endl;
+    cout << "Our Tempting Food Menu - \n" << endl;
+
+    for (int i = 0; i < 7; i++)
+    {
+        // Showing food menu to customer
+        cout << i + 1 << ". " << fmenu[i] << endl;
+    }
+
+    int n;
+    cout<<"Enter the number of orders you want to place"<<endl;
+    cin>>n;
+    int a[n];
+    int b[n];
+
+    for (int i=0; i<n; i++)
+    {
+        cout << "\nSelect the food "<< (i+1) <<" you want to order : ";
+
+        // Taking order from customer
+        cin >> order;
+        a[i]= order;
+        cout << "\nYou have selected " << fmenu[order-1] << endl;
+        cout << "\nEnter Quantity : ";
+
+        // Taking quantity of food
+        cin >> quantity;
+        b[i]= quantity;
+    }
+
+    cout << "\n\n\t\t\tCustomer Details\n\n";
+
+    // Taking delivery details from customer
+    cout << "Enter Your Name : ";
+    cin >> Name;
+    cout << "Enter Contact Number : ";
+    cin >> contact;
+    cout << "Enter time you will pick up the order : ";
+    cin >> ptime;
+
+    cout << "\n\n\t\t\tYour Bill\n\n";
+
+    //Storing the total amount into the integer type variable "total"
+    int total = 0;
+    for(int i=0; i<n; i++)
+    {
+        total= total + ( price[a[i]-1] * b[i]);
+        cout << fmenu[a[i]-1] << " * " << b[i] << "\t\t\t" << price[a[i]-1] << " * " << b[i] << endl;
+    }
+    // Showing bill with customer details
+    cout << "\n------------------------------------------------------------\n";
+    cout << "Total" << "\t\t - \t\t" << total << " INR\n" << endl;
+    cout << Name << endl;
+    cout << contact << endl;
+    cout << ptime << endl;
+
+    cout << "\n\n\t\t\tPAYMENT INFORMATION\n\n";
+    cout << "We Accept - \n\n";
+
+    for (int i = 0; i < 5; i++)
+    {
+        // Showing payment options to customer
+        cout << i + 1 << ". " << payment[i] << endl;
+    }
+
+    cout << "\nSelect your desired payment method : ";
+    cin >> cpayment;
+
+    cout << "\nEnter Your " << payment[cpayment - 1] << " Number : " << endl;
+    cin >> paymentnum;
+
+    // Taking transaction id from customer
+    cout << "Enter Your Transaction ID : " << endl;
+    cin >> transid;
+
+    if (cpayment == 1 && total > 249)
+    {
+        // Customers will get discount when orders more than 249TK using Bkash
+        cout << "\nYou are eligible for PayTM 25% cashback" << endl;
+        cout << "\nCongratulations! You have received " << total*25/100 << " INR as cashback from MPSTME Canteen" << endl;
+    }
+
+    else if (total > 666)
+    {
+        // Customers will get discount when orders more than 666TK
+        cout << "\nYou are eligible for HOLI-666 cashback offer" << endl;
+        cout << "\nCongratulations! You have received " << total * 6 / 100 << " INR as cashback from SNACK BAR" << endl;
+    }
+
+    
+		
+    cout<< "Would you like to give us a feedback? "<<endl;
+    cout<< "1. Yes	2. No"<<endl;
+    int ch;
+    cin>>ch;
+    if(ch==1)
+    {
+    	string s1,s2,s3;
+    	cout<<"How was the food quality?"<<endl;
+      cin>>s1;
+      cout<<"Was the Quantity of food enough?"<<endl;
+      cin>>s2;
+      cout<<"How do you feel was the service?"<<endl;
+      cin>>s3;
+      cout<<"THANK YOU FOR YOUR FEEDBACK!"<<endl;
+      cout << "\nThank you for choosing us. \nENJOY YOUR FOOD! :)\n";
+    }
+    
+    else
+    {
+    	cout << "\nThank you for choosing us. \nENJOY YOUR FOOD! :)\n";
+    }
+    return 0;
+}
+
